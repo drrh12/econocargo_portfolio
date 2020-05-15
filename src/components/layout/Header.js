@@ -1,11 +1,11 @@
-import routes from '../../routes'
+// import routes from '../../routes'
 import React, { useState, useRef, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useLocation,
+  //useLocation,
 } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
