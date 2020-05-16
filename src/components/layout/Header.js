@@ -1,17 +1,18 @@
 // import routes from '../../routes'
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
+  useHistory,
   //useLocation,
-} from "react-router-dom";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Logo from "./partials/Logo";
+} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Logo from './partials/Logo';
 
-import LoginPage from "../dashboard/LoginPage";
+import LoginPage from '../dashboard/LoginPage';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -22,7 +23,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  navPosition: "",
+  navPosition: '',
   hideNav: false,
   hideSignin: false,
   bottomOuterDivider: false,
@@ -40,28 +41,30 @@ const Header = ({
 }) => {
   const [isActive, setIsactive] = useState(false);
 
+  let history = useHistory();
+
   const nav = useRef(null);
   const hamburger = useRef(null);
 
   useEffect(() => {
     isActive && openMenu();
-    document.addEventListener("keydown", keyPress);
-    document.addEventListener("click", clickOutside);
+    document.addEventListener('keydown', keyPress);
+    document.addEventListener('click', clickOutside);
     return () => {
-      document.removeEventListener("keydown", keyPress);
-      document.addEventListener("click", clickOutside);
+      document.removeEventListener('keydown', keyPress);
+      document.addEventListener('click', clickOutside);
       closeMenu();
     };
   });
 
   const openMenu = () => {
-    document.body.classList.add("off-nav-is-active");
-    nav.current.style.maxHeight = nav.current.scrollHeight + "px";
+    document.body.classList.add('off-nav-is-active');
+    nav.current.style.maxHeight = nav.current.scrollHeight + 'px';
     setIsactive(true);
   };
 
   const closeMenu = () => {
-    document.body.classList.remove("off-nav-is-active");
+    document.body.classList.remove('off-nav-is-active');
     nav.current && (nav.current.style.maxHeight = null);
     setIsactive(false);
   };
@@ -82,19 +85,19 @@ const Header = ({
   };
 
   const classes = classNames(
-    "site-header",
-    bottomOuterDivider && "has-bottom-divider",
+    'site-header',
+    bottomOuterDivider && 'has-bottom-divider',
     className
   );
 
   return (
     <Router>
       <header {...props} className={classes}>
-        <div className="container">
+        <div className='container'>
           <div
             className={classNames(
-              "site-header-inner",
-              bottomDivider && "has-bottom-divider"
+              'site-header-inner',
+              bottomDivider && 'has-bottom-divider'
             )}
           >
             <Logo />
@@ -102,38 +105,40 @@ const Header = ({
               <>
                 <button
                   ref={hamburger}
-                  className="header-nav-toggle"
+                  className='header-nav-toggle'
                   onClick={isActive ? closeMenu : openMenu}
                 >
-                  <span className="screen-reader">Menu</span>
-                  <span className="hamburger">
-                    <span className="hamburger-inner"></span>
+                  <span className='screen-reader'>Menu</span>
+                  <span className='hamburger'>
+                    <span className='hamburger-inner'></span>
                   </span>
                 </button>
                 <nav
                   ref={nav}
-                  className={classNames("header-nav", isActive && "is-active")}
+                  className={classNames('header-nav', isActive && 'is-active')}
                 >
-                  <div className="header-nav-inner">
+                  <div className='header-nav-inner'>
                     <ul
                       className={classNames(
-                        "list-reset text-xs",
+                        'list-reset text-xs',
                         navPosition && `header-nav-${navPosition}`
                       )}
                     >
                       <li>
-                        <Link to="/contato" onClick={closeMenu}>
+                        <Link to='/contato' onClick={closeMenu}>
                           Contato
                         </Link>
                       </li>
                     </ul>
                     {!hideSignin && (
-                      <ul className="list-reset header-nav-right">
+                      <ul className='list-reset header-nav-right'>
                         <li>
                           <Link
-                            to="/login"
-                            className="button button-primary button-wide-mobile button-sm"
-                            onClick={closeMenu}
+                            to='/login'
+                            className='button button-primary button-wide-mobile button-sm'
+                            onClick={() => {
+                              history.push('/login');
+                            }}
                           >
                             Login
                           </Link>
@@ -141,8 +146,7 @@ const Header = ({
                       </ul>
                     )}
                     <Switch>
-                      <Route path="/login" component={LoginPage}>
-                      </Route>
+                      <Route path='/login' component={LoginPage}></Route>
                     </Switch>
                   </div>
                 </nav>
