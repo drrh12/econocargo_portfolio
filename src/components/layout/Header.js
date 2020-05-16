@@ -39,6 +39,7 @@ const Header = ({
   bottomDivider,
   ...props
 }) => {
+  
   const [isActive, setIsactive] = useState(false);
 
   let history = useHistory();
