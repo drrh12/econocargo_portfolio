@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,12 +8,14 @@ import {
   useHistory,
   //useLocation,
 } from "react-router-dom";
+
 import classNames from "classnames";
 import { SectionProps } from "../../utils/SectionProps";
 import ButtonGroup from "../elements/ButtonGroup";
 import Button from "../elements/Button";
 import Image from "../elements/Image";
 import Modal from "../elements/Modal";
+
 import CalculusIntro from "./partials/CalculusIntro";
 
 const propTypes = {
@@ -86,30 +89,31 @@ const Hero = ({
                   <ButtonGroup>
                     <Button tag="a" color="primary" wideMobile>
                       <Link
-                        to="/calculus_intro"
+                        to="/calculo"
                         onClick={() => {
-                          history.push("/calculus_intro");
+                          history.push("/calculo");
                         }}
                       >
                         Faça uma cotação
                       </Link>
                     </Button>
-                    <Button
-                      tag="a"
-                      color="dark"
-                      wideMobile
-                      href="#"
-                    >
+                    <Button tag="a" color="dark" wideMobile href="#">
                       Seja nosso cliente
                     </Button>
                   </ButtonGroup>
+                  <Switch>
+                    <Route
+                      path="/calculo"
+                      component={CalculusIntro}
+                    ></Route>
+                  </Switch>
                 </div>
               </div>
             </div>
             <div
               className="hero-figure reveal-from-bottom illustration-element-01"
               data-reveal-value="20px"
-              data-reveal-delay="800"
+              //data-reveal-delay="800"
             >
               <a
                 data-video="https://player.vimeo.com/video/416768488"
@@ -134,9 +138,6 @@ const Hero = ({
               videoTag="iframe"
             />
           </div>
-          <Switch>
-            <Route path="/calculus_intro" component={CalculusIntro}></Route>
-          </Switch>
         </div>
       </section>
     </Router>

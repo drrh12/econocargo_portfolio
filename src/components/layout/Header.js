@@ -141,7 +141,7 @@ const Header = ({
                               history.push('/login');
                             }}
                           >
-                            Login
+                            LOGIN
                           </Link>
                         </li>
                       </ul>
