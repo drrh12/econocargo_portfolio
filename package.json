@@ -17,6 +17,7 @@
     "react-scripts": "^3.4.1",
     "react-slick": "^0.26.1",
     "reactstrap": "^8.4.1",
+    "serve": "^11.3.2",
     "slick-carousel": "^1.8.1"
   },
   "repository": {
@@ -24,9 +25,10 @@
     "url": "https://github.com/drrh12/new_front.git"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
   },
