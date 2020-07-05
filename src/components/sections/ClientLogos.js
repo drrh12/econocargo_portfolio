@@ -32,7 +32,7 @@ const ClientLogos = () => {
 			<img src={require('../../assets/images/client_logos/revix.png') } height="100" width="250" alt="" />
 		</div>
 		<div class="slide">
-			<img src={require('../../assets/images/client_logos/printek.png') } height="100" width="250" alt="" />
+			<img src={require('../../assets/images/client_logos/oncovit.png') } height="100" width="250" alt="" />
 		</div>
 		<div class="slide">
 			<img src={require('../../assets/images/client_logos/golden.png') } height="100" width="250" alt="" />
